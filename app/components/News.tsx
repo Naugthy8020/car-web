@@ -3,6 +3,7 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import axios from 'axios';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import Link from 'next/link';
 import 'swiper/swiper-bundle.css';
 
 const News: React.FC = () => {
@@ -44,6 +45,7 @@ const News: React.FC = () => {
             }
           );
           setQuestions(response.data.contents);
+          console.log(response.data.contents); 
           localStorage.setItem('questions', JSON.stringify(response.data.contents)); // キャッシュ
           setLoading(false);
         } catch (error) {
@@ -83,7 +85,7 @@ const News: React.FC = () => {
 
       {/* Swiperカルーセル */}
       <Swiper
-        spaceBetween={30}
+        spaceBetween={40} // スライド間のスペースを広げる
         slidesPerView={1}
         loop={false} // 無限ループを無効化
         breakpoints={{
@@ -94,19 +96,25 @@ const News: React.FC = () => {
             slidesPerView: 3,
           },
         }}
-        navigation
+         
         pagination={{ clickable: true }}
         className="mySwiper"
+        style={{
+          padding: '0 24px', // Swiper全体に左右のパディングを追加
+          paddingBottom: '40px', // Swiper全体の下部にパディングを追加
+        }}
       >
         {memoizedQuestions.map((question) => (
+          
           <SwiperSlide key={question.id}>
+               <Link href={`/our-news/${question.id}`}> {/* Wrap with Link */}
             <div
-              className="bg-white rounded-xl shadow-xl p-8 hover:shadow-2xl transition-shadow flex flex-col justify-between"
+              className="bg-white rounded-xl shadow-xl p-8 hover:shadow-2xl transition-shadow flex flex-col justify-between mb-4"
               style={{
                 height: '500px',
                 width: '100%',
                 maxWidth: '800px',
-                minWidth: '300px', // 最小幅を指定
+                minWidth: '350px',
                 margin: '0 auto',
               }}
             >
@@ -115,13 +123,14 @@ const News: React.FC = () => {
                   src={question.image.url}
                   alt={question.title || 'ニュース画像'}
                   className="w-full h-64 object-cover mb-4 rounded-lg"
-                  loading="lazy" // 遅延読み込み
+                  loading="lazy"
                 />
               )}
               <h2 className="text-2xl font-semibold mb-2">{question.title}</h2>
               <p className="text-sm text-gray-500 mb-2">{formatDate(question.time)}</p>
               <p className="text-lg text-gray-700 flex-grow overflow-hidden">{question.text}</p>
             </div>
+            </Link>
           </SwiperSlide>
         ))}
       </Swiper>
