@@ -128,7 +128,7 @@ const News: React.FC = () => {
               )}
               <h2 className="text-2xl font-semibold mb-2">{question.title}</h2>
               <p className="text-sm text-gray-500 mb-2">{formatDate(question.time)}</p>
-              <p className="text-lg text-gray-700 flex-grow overflow-hidden">{question.text}</p>
+              {/* <p className="text-lg text-gray-700 flex-grow overflow-hidden">{question.text}</p> */}
             </div>
             </Link>
           </SwiperSlide>
