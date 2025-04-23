@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import Button from '../components/Button';
 
 const AchievementsPage: React.FC = () => {
   return (
@@ -28,13 +28,8 @@ const AchievementsPage: React.FC = () => {
           </p>
         </div>
 
-        <div className="absolute bottom-6 right-6">
-          <Link
-            href="/achievements/details"
-            className="px-5 py-2 bg-blue-600 text-white text-sm rounded hover:bg-blue-700 transition"
-          >
-            詳しく見る
-          </Link>
+        <div className="max-w-7xl absolute bottom-6 right-6">
+          <Button label="詳しく見る" href="/achievements/details" />
         </div>
       </div>
 

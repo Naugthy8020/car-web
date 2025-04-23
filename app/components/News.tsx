@@ -3,8 +3,12 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import axios from 'axios';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper/modules'; 
 import Link from 'next/link';
 import 'swiper/swiper-bundle.css';
+import './swiper-custom.css'; // 追加（後述）
+
+
 
 const News: React.FC = () => {
   interface Question {
@@ -96,8 +100,9 @@ const News: React.FC = () => {
             slidesPerView: 3,
           },
         }}
-         
+        modules={[Navigation, Pagination]} 
         pagination={{ clickable: true }}
+        navigation={true} // ナビゲーションボタンを表示
         className="mySwiper"
         style={{
           padding: '0 24px', // Swiper全体に左右のパディングを追加
@@ -106,32 +111,29 @@ const News: React.FC = () => {
       >
         {memoizedQuestions.map((question) => (
           
-          <SwiperSlide key={question.id}>
-               <Link href={`/our-news/${question.id}`}> {/* Wrap with Link */}
-            <div
-              className="bg-white rounded-xl shadow-xl p-8 hover:shadow-2xl transition-shadow flex flex-col justify-between mb-4"
-              style={{
-                height: '500px',
-                width: '100%',
-                maxWidth: '800px',
-                minWidth: '350px',
-                margin: '0 auto',
-              }}
-            >
-              {question.image?.url && (
-                <img
-                  src={question.image.url}
-                  alt={question.title || 'ニュース画像'}
-                  className="w-full h-64 object-cover mb-4 rounded-lg"
-                  loading="lazy"
-                />
-              )}
-              <h2 className="text-2xl font-semibold mb-2">{question.title}</h2>
-              <p className="text-sm text-gray-500 mb-2">{formatDate(question.time)}</p>
-              {/* <p className="text-lg text-gray-700 flex-grow overflow-hidden">{question.text}</p> */}
-            </div>
-            </Link>
-          </SwiperSlide>
+         <SwiperSlide key={question.id} className="flex justify-center">
+  <Link href={`/our-news/${question.id}`}>
+    <div className="bg-white rounded-xl shadow-xl p-8 hover:shadow-2xl transition-shadow flex flex-col justify-between mb-4"
+      style={{
+        height: '500px',
+        width: '100%',
+        maxWidth: '350px', // これで中央に整いやすくなる
+      }}
+    >
+      {question.image?.url && (
+        <img
+          src={question.image.url}
+          alt={question.title || 'ニュース画像'}
+          className="w-full h-64 object-cover mb-4 rounded-lg"
+          loading="lazy"
+        />
+      )}
+      <h2 className="text-2xl font-semibold mb-2">{question.title}</h2>
+      <p className="text-sm text-gray-500 mb-2">{formatDate(question.time)}</p>
+    </div>
+  </Link>
+</SwiperSlide>
+
         ))}
       </Swiper>
     </div>

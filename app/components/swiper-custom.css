@@ -1,0 +1,22 @@
+/* swiper-custom.css */
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: black !important;
+  width: 44px;
+  height: 44px;
+  top: 45%; /* 垂直中央 */
+  transform: translateY(-50%);
+}
+
+.swiper-button-next {
+  right: -0.3rem !important; /* スライダーの外側に移動 */
+}
+
+.swiper-button-prev {
+  left: -0.3rem !important; /* スライダーの外側に移動 */
+}
+
+.swiper-pagination-bullet {
+  background: black !important;
+}

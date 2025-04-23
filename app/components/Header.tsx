@@ -1,44 +1,71 @@
 "use client";
 
 import { useState } from 'react';
+import { usePathname } from 'next/navigation'; // ← 現在のパス取得
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname(); // ← 現在のパス取得
+
+  const isActive = (href: string) =>
+    pathname === href ? 'border-b-2 border-black font-semibold' : ''; // アクティブリンクに下線
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    setIsMenuOpen(!isMenuOpen); // メニュー開閉トグル
   };
 
   return (
- <header className="bg-gray-100 text-gray-600 py-9 shadow">
-
+    <header className="bg-gray-100 text-gray-600 py-9 shadow">
       <div className="container mx-auto">
         <div className="flex items-center w-full">
           {/* ロゴ */}
+          <Image
+            src="/images/round-icons-KldDKNNnm3k-unsplash.svg"
+            alt="Car Inc. Logo"
+            width={40}
+            height={40}
+            className="mr-4"
+          />
           <h1 className="text-xl font-bold">
-            <Link href="/">My Website</Link>
+            <Link href="/">Car Inc.</Link>
           </h1>
 
-          {/* ナビゲーションメニュー */}
+          {/* ナビゲーション */}
           <nav className="hidden lg:flex ml-8 flex-grow justify-end">
             <ul className="flex space-x-4">
               <li>
-                <Link href="/" className="hover:text-black">Home</Link>
+                <Link
+                  href="/"
+                  className={`hover:text-black ${isActive('/')}`} // ホームリンク
+                >
+                  Home
+                </Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-black">About</Link>
+                <Link
+                  href="/about"
+                  className={`hover:text-black ${isActive('/about')}`} // Aboutリンク
+                >
+                  About
+                </Link>
               </li>
               <li>
-                <Link href="/qa" className="hover:text-black">Contact</Link>
+                <Link
+                  href="/qa"
+                  className={`hover:text-black ${isActive('/qa')}`} // Contactリンク
+                >
+                  Contact
+                </Link>
               </li>
             </ul>
           </nav>
 
-          {/* ハンバーガーボタン（モバイル表示） */}
+          {/* ハンバーガーメニュー */}
           <button
             className="lg:hidden text-gray-600 w-8 h-8 flex items-center justify-center ml-auto"
-            onClick={toggleMenu}
+            onClick={toggleMenu} // ハンバーガーメニューを押したときにメニュー開閉
           >
             <div className="relative w-6 h-6 transition-all duration-300">
               <span
@@ -60,17 +87,32 @@ export default function Header() {
           </button>
         </div>
 
-        {/* モバイル時ナビ表示 */}
+        {/* モバイルナビ */}
         <nav className={`mt-2 ${isMenuOpen ? 'block' : 'hidden'} lg:hidden`}>
           <ul className="flex flex-col items-center space-y-4">
             <li>
-              <Link href="/" className="hover:text-black">Home</Link>
+              <Link
+                href="/"
+                className={`hover:text-black ${isActive('/')}`} // モバイルのホームリンク
+              >
+                Home
+              </Link>
             </li>
             <li>
-              <Link href="/about" className="hover:text-black">About</Link>
+              <Link
+                href="/about"
+                className={`hover:text-black ${isActive('/about')}`} // モバイルのAboutリンク
+              >
+                About
+              </Link>
             </li>
             <li>
-              <Link href="/contact" className="hover:text-black">Contact</Link>
+              <Link
+                href="/qa"
+                className={`hover:text-black ${isActive('/qa')}`} // モバイルのContactリンク
+              >
+                Contact
+              </Link>
             </li>
           </ul>
         </nav>
