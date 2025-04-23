@@ -17,8 +17,8 @@ const ImageSlider: React.FC = () => {
 
   return (
     <div className="w-full relative">
-      {/* スライダー部分だけ高さ指定 */}
-      <div className="relative h-[450px]">
+      {/* スライダー部分 */}
+      <div className="relative h-[300px] sm:h-[450px]">
         <Swiper
           modules={[Autoplay, Pagination, Navigation]}
           spaceBetween={10}
@@ -29,30 +29,30 @@ const ImageSlider: React.FC = () => {
             clickable: true,
           }}
           navigation={true}
-          effect="fade"  // フェード効果で切り替え
-          speed={800}  // スライドの切り替え速度を調整
+          effect="fade"
+          speed={800}
         >
           {images.map((src, index) => (
             <SwiperSlide key={index}>
-              <div className="w-full h-[450px]">
+              <div className="w-full h-[300px] sm:h-[450px]">
                 <img
                   src={src}
                   alt={`Image ${index + 1}`}
                   className="w-full h-full object-cover"
-                  loading="eager"  // 遅延読み込み
+                  loading="eager"
                 />
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
 
-        {/* 下の黒背景 + ●●● */}
+        {/* 黒背景の下部・ページネーション */}
         <div className="absolute bottom-0 w-full bg-black/50 py-2">
           <div className="swiper-pagination !static flex justify-center" />
         </div>
       </div>
 
-      {/* ←これが表示されるようになる */}
+      {/* 下のグレー部分 */}
       <div className="bg-gray-100 h-20 w-full" />
     </div>
   );
