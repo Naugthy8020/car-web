@@ -54,7 +54,8 @@ const MapPage = () => {
   return (
     <div className="max-w-4xl mx-auto px-4 py-12">
       <h1 className="text-4xl font-bold mb-8 text-center">地図ページ</h1>
-      <div id="map" style={{ height: '500px', width: '100%' }}></div>
+      {/* レスポンシブな地図コンテナ */}
+      <div id="map" className="w-full h-[250px] sm:h-[300px] md:h-[400px] rounded shadow-md"></div>
     </div>
   );
 };

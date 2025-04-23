@@ -18,7 +18,7 @@ export default function Home() {
   <IconSquare icon="📝" label="About" href='/about' />
   <IconSquare icon="📍" label="Map" href='/map' />
   <IconSquare icon="☎︎" label="Call" href="/about#policy" />
-  <IconSquare icon="💬" label="Chat" href='qa' />
+  <IconSquare icon="💬" label="Contact" href='qa' />
 
 </div>
 
