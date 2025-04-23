@@ -64,27 +64,29 @@ export default function Header() {
 
           {/* ハンバーガーメニュー */}
           <button
-            className="lg:hidden text-gray-600 w-8 h-8 flex items-center justify-center ml-auto"
-            onClick={toggleMenu} // ハンバーガーメニューを押したときにメニュー開閉
-          >
-            <div className="relative w-6 h-6 transition-all duration-300">
-              <span
-                className={`block absolute w-6 h-0.5 bg-gray-600 transition-transform duration-300 ${
-                  isMenuOpen ? 'rotate-45 top-[50%] transform -translate-y-1/2' : 'top-0'
-                }`}
-              ></span>
-              <span
-                className={`block absolute w-6 h-0.5 bg-gray-600 transition-opacity duration-300 ${
-                  isMenuOpen ? 'opacity-0 top-[50%] transform -translate-y-1/2' : 'top-[25%]'
-                }`}
-              ></span>
-              <span
-                className={`block absolute w-6 h-0.5 bg-gray-600 transition-transform duration-300 ${
-                  isMenuOpen ? 'rotate-135 top-[50%] transform -translate-y-1/2' : 'top-[50%]'
-                }`}
-              ></span>
-            </div>
-          </button>
+  className="lg:hidden text-gray-600 w-8 h-8 flex items-center justify-center absolute right-2" // right-2で右寄せ
+  onClick={toggleMenu}
+>
+  <div className="relative w-6 h-6 transition-all duration-300">
+    <span
+      className={`block absolute w-6 h-0.5 bg-gray-600 transition-transform duration-300 ${
+        isMenuOpen ? 'rotate-45 top-[50%] transform -translate-y-1/2' : 'top-0'
+      }`}
+    ></span>
+    <span
+      className={`block absolute w-6 h-0.5 bg-gray-600 transition-opacity duration-300 ${
+        isMenuOpen ? 'opacity-0 top-[50%] transform -translate-y-1/2' : 'top-[25%]'
+      }`}
+    ></span>
+    <span
+      className={`block absolute w-6 h-0.5 bg-gray-600 transition-transform duration-300 ${
+        isMenuOpen ? 'rotate-135 top-[50%] transform -translate-y-1/2' : 'top-[50%]'
+      }`}
+    ></span>
+  </div>
+</button>
+
+
         </div>
 
         {/* モバイルナビ */}
