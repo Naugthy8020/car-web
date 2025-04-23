@@ -5,7 +5,7 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-gray-100 text-gray-600 py-6 mt-10">
       <div className="max-w-4xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
-        <p className="text-sm mb-4 md:mb-0">&copy; {new Date().getFullYear()} My News Site</p>
+        <p className="text-sm mb-4 md:mb-0">&copy; {new Date().getFullYear()} Car Inc.</p>
         <div className="flex space-x-4 text-2xl">
           <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400">
             <FaTwitter />

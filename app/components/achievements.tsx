@@ -29,7 +29,7 @@ const AchievementsPage: React.FC = () => {
         </div>
 
         <div className="max-w-7xl absolute bottom-6 right-6">
-          <Button label="詳しく見る" href="/achievements/details" />
+          <Button label="詳しく見る" href="/achievements" />
         </div>
       </div>
 

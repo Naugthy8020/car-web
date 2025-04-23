@@ -5,20 +5,19 @@ const AboutPage = () => {
   return (
     <div className="max-w-4xl mx-auto px-4 py-12">
       {/* 会社名とロゴ */}
-      <div className="flex items-center mb-8">
-  <Image
-    src="/images/round-icons-KldDKNNnm3k-unsplash.svg"
-    alt="Car Inc. Logo"
-    width={60}
-    height={60}
-    className="mr-4"
-  />
-  <h1 className="text-4xl font-bold">Car Inc.</h1>
-</div>
-
+      <div className="flex items-center mb-8 border-b border-gray-300 pb-4">
+        <Image
+          src="/images/round-icons-KldDKNNnm3k-unsplash.svg"
+          alt="Car Inc. Logo"
+          width={60}
+          height={60}
+          className="mr-4"
+        />
+        <h1 className="text-4xl font-bold">Car Inc.</h1>
+      </div>
 
       {/* 会社のビジョン */}
-      <section className="mb-8">
+      <section className="mb-8 border-b border-gray-300 pb-8">
         <h2 className="text-2xl font-semibold mb-4">私たちのビジョン</h2>
         <div className="mb-4">
           <Image
@@ -37,7 +36,7 @@ const AboutPage = () => {
       </section>
 
       {/* SDGsの取り組み */}
-      <section className="mb-8 bg-green-100 p-6 rounded-lg">
+      <section className="mb-8 bg-green-100 p-6 rounded-lg border-b border-gray-300 pb-8">
         <h2 className="text-2xl font-semibold mb-4">SDGsへの取り組み</h2>
         <div className="mb-4">
           <Image
@@ -60,7 +59,7 @@ const AboutPage = () => {
       </section>
 
       {/* サービス内容 */}
-      <section className="mb-8">
+      <section className="mb-8 border-b border-gray-300 pb-8">
         <h2 className="text-2xl font-semibold mb-4">サービス内容</h2>
         <div className="mb-4">
           <Image
@@ -72,16 +71,16 @@ const AboutPage = () => {
           />
         </div>
         <ul className="list-disc pl-6 text-lg text-gray-700">
-          <li>オイル交換・フィルター交換: 定期的なオイル交換でエンジンの寿命を延ばし、燃費を向上させます。</li>
-          <li>タイヤ交換・バランス調整: 走行性能を向上させ、事故を未然に防ぐための重要なサービスです。</li>
-          <li>ブレーキ点検・修理: 安全性を最優先にしたブレーキのメンテナンスを行い、安心して運転できるようサポートします。</li>
-          <li>エンジン・トランスミッションの整備: 複雑なエンジンやトランスミッションのメンテナンスも、高度な技術で対応します。</li>
-          <li>車検: 法定の車検を確実に実施し、安全基準を満たす整備を行います。</li>
+          <li>オイル交換・フィルター交換</li>
+          <li>タイヤ交換・バランス調整</li>
+          <li>ブレーキ点検・修理</li>
+          <li>エンジン・トランスミッションの整備</li>
+          <li>車検</li>
         </ul>
       </section>
 
       {/* なぜ選ばれるか */}
-      <section className="mb-8">
+      <section className="mb-8 border-b border-gray-300 pb-8">
         <h2 className="text-2xl font-semibold mb-4">なぜ私たちを選ぶのか？</h2>
         <div className="mb-4">
           <Image
@@ -93,15 +92,15 @@ const AboutPage = () => {
           />
         </div>
         <ul className="list-disc pl-6 text-lg text-gray-700">
-          <li>経験豊富な技術者: 豊富な経験と専門的な知識を持ち、あらゆる車種に対応できます。</li>
-          <li>最新設備: 最新の整備機器を使用して、車の状態を正確に診断し、高品質な整備を提供します。</li>
-          <li>お客様第一: お客様の立場に立ち、最適な整備プランを提案します。</li>
-          <li>迅速で丁寧なサービス: できるだけ迅速に、そして丁寧に作業を行います。</li>
+          <li>経験豊富な技術者</li>
+          <li>最新設備</li>
+          <li>お客様第一</li>
+          <li>迅速で丁寧なサービス</li>
         </ul>
       </section>
 
       {/* お客様の声 */}
-      <section>
+      <section className="border-b border-gray-300 pb-8">
         <h2 className="text-2xl font-semibold mb-4">お客様の声</h2>
         <div className="mb-4">
           <Image
@@ -117,6 +116,38 @@ const AboutPage = () => {
           「スタッフの方々がとても親切で、説明もわかりやすく安心して整備を任せられました。」<br />
           「地域密着の姿勢が素晴らしく、何かあればすぐに相談できるので助かっています。」
         </p>
+      </section>
+
+      {/* 会社情報とポリシー */}
+      <section className="mt-12  text-sm" id="policy">
+        <h2 className="text-2xl font-semibold mb-4">会社情報・ポリシー</h2>
+
+        <div className="mb-6">
+          <h3 className="text-lg font-semibold mb-2">会社概要</h3>
+          <p><strong>会社名：</strong>Car Inc.</p>
+          <p><strong>所在地：</strong>〒123-4567 大阪府大阪市中央区サンプル町1-2-3</p>
+          <p><strong>電話番号：</strong>06-1234-5678</p>
+          <p><strong>メールアドレス：</strong>info@carinc.jp</p>
+        </div>
+
+        <div className="mb-6">
+          <h3 className="text-lg font-semibold mb-2">個人情報保護方針</h3>
+          <p>
+            当社は、お客様の個人情報を厳重に管理し、法令に基づき適切に取り扱います。
+            情報の第三者提供は、法的義務を除き一切行いません。
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-lg font-semibold mb-2">サービスに関するポリシー</h3>
+          <ul className="list-disc pl-6">
+            <li>整備内容や料金については事前に明確にご説明いたします。</li>
+            <li>国の法令や安全基準に則ったサービス提供を徹底しています。</li>
+            <li>お客様第一の姿勢で、信頼と安心の整備をお届けします。</li>
+          </ul>
+        </div>
+
+        <p className="mt-8 text-center text-gray-500">&copy; {new Date().getFullYear()} Car Inc. All rights reserved.</p>
       </section>
     </div>
   );
