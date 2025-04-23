@@ -8,7 +8,7 @@ const AchievementsPage: React.FC = () => {
   return (
     <div>
       {/* グレーのスペース（画像の上） */}
-      <div className="bg-gray-100 h-[5px] sm:h-5 w-full" /> {/* 小さい画面では高さが大きくなるように設定 */}
+      <div className="bg-gray-100 h-[10px] sm:h-5 w-full" /> {/* 小さい画面では高さが大きくなるように設定 */}
 
       {/* メインビジュアル */}
      <div className="relative w-full h-[600px] sm:h-[500px]">
@@ -27,16 +27,20 @@ const AchievementsPage: React.FC = () => {
       私たちの成果をご覧ください。数々のプロジェクトとクライアントの成功事例を紹介します。
     </p>
   </div>
+  <div className="max-w-7xl absolute bottom-6 right-6 sm:right-4 sm:bottom-4 md:right-6 md:bottom-6">
+  <Button
+    label="詳しく見る"
+    href="/achievements"
+    className="xl:mr-157 sm:mr-2 md:mr-4" 
+  />
+</div>
 
-  <div className="max-w-7xl absolute bottom-6 right-6">
-    <Button label="詳しく見る" href="/achievements" />
-  </div>
 </div>
 
 
 
       {/* グレーのスペース（画像の下） */}
-      <div className="bg-gray-100 h-[5px] sm:h-5 w-full" /> {/* 小さい画面では高さが大きくなるように設定 */}
+      <div className="bg-gray-100 h-[10px] sm:h-5 w-full" /> {/* 小さい画面では高さが大きくなるように設定 */}
     </div>
   );
 };

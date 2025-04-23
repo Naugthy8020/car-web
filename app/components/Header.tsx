@@ -22,12 +22,13 @@ export default function Header() {
         <div className="flex items-center w-full">
           {/* ロゴ */}
           <Image
-            src="/images/round-icons-KldDKNNnm3k-unsplash.svg"
-            alt="Car Inc. Logo"
-            width={40}
-            height={40}
-            className="mr-4"
-          />
+  src="/images/round-icons-KldDKNNnm3k-unsplash.svg"
+  alt="Car Inc. Logo"
+  width={40}
+  height={40}
+  className="mr-4 mb-3" // ここで少し上に移動
+/>
+
           <h1 className="text-xl font-bold">
             <Link href="/">Car Inc.</Link>
           </h1>

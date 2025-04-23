@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import axios from 'axios';
 import Image from 'next/image';
+import Button from './Button';  // Import the Button component
 
 const ServicesSection: React.FC = () => {
   const [services, setServices] = useState<any[]>([]);
@@ -64,14 +65,13 @@ const ServicesSection: React.FC = () => {
         ))}
       </div>
 
-      {/* 詳しく見るボタン */}
+      {/* Replace the current button with the Button component */}
       <div className="flex justify-end mt-6">
-        <Link
+        <Button
+          label="一覧へ"
           href="/our-services"
-          className="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
-        >
-          詳しく見る
-        </Link>
+         
+        />
       </div>
     </div>
   );
