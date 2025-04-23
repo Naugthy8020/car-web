@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
@@ -16,8 +16,24 @@ const ImageSlider: React.FC = () => {
     '/images/thisisengineering-aL2rxQhEfAM-unsplash.jpg',
   ];
 
+  useEffect(() => {
+    // Swiper初期化タイミングのため、矢印の存在が確認できるようになる
+  }, []);
+
   return (
     <div className="w-full relative">
+      {/* ナビゲーションボタン（外に出す） */}
+      <div className="absolute left-4 top-1/2 -translate-y-1/2 z-10 cursor-pointer select-none">
+        <div className="custom-swiper-button-prev text-white text-5xl hover:opacity-80">
+          &#10094;
+        </div>
+      </div>
+      <div className="absolute right-4 top-1/2 -translate-y-1/2 z-10 cursor-pointer select-none">
+        <div className="custom-swiper-button-next text-white text-5xl hover:opacity-80">
+          &#10095;
+        </div>
+      </div>
+
       {/* スライダー部分 */}
       <div className="relative h-[300px] sm:h-[450px]">
         <Swiper
@@ -26,8 +42,11 @@ const ImageSlider: React.FC = () => {
           slidesPerView={1}
           loop={true}
           autoplay={{ delay: 3000 }}
-          pagination={{ clickable: true }}
-          navigation={true}
+
+          navigation={{
+            nextEl: '.custom-swiper-button-next',
+            prevEl: '.custom-swiper-button-prev',
+          }}
           effect="fade"
           speed={800}
         >
@@ -46,7 +65,7 @@ const ImageSlider: React.FC = () => {
           ))}
         </Swiper>
 
-        {/* 黒背景の下部・ページネーション */}
+        {/* ページネーション */}
         <div className="absolute bottom-0 w-full bg-black/50 py-2">
           <div className="swiper-pagination !static flex justify-center" />
         </div>

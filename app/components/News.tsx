@@ -6,8 +6,10 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import Link from 'next/link';
 import Image from 'next/image';
-import 'swiper/swiper-bundle.css';
-import './swiper-custom.css';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import './swiper-custom.css'; // 必ず存在確認！
 
 interface Question {
   id: string;
@@ -70,17 +72,26 @@ const News: React.FC = () => {
     });
   };
 
-  if (loading) {
-    return <div className="text-center mt-10">読み込み中...</div>;
-  }
-
-  if (error) {
-    return <div className="text-red-500 text-center mt-10">{error}</div>;
-  }
+  if (loading) return <div className="text-center mt-10">読み込み中...</div>;
+  if (error) return <div className="text-red-500 text-center mt-10">{error}</div>;
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8">
+    <div className="max-w-6xl mx-auto px-4 py-8 relative">
       <h1 className="text-3xl font-bold mb-6 text-center">news一覧</h1>
+
+      {/* カスタム矢印（黒） */}
+      <div
+        className="custom-swiper-button-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 text-5xl hover:opacity-60 cursor-pointer select-none px-2"
+        style={{ color: '#000' }}
+      >
+        &#10094;
+      </div>
+      <div
+        className="custom-swiper-button-next absolute right-0 top-1/2 -translate-y-1/2 z-10 text-5xl hover:opacity-60 cursor-pointer select-none px-2"
+        style={{ color: '#000' }}
+      >
+        &#10095;
+      </div>
 
       <Swiper
         spaceBetween={40}
@@ -92,7 +103,10 @@ const News: React.FC = () => {
         }}
         modules={[Navigation, Pagination]}
         pagination={{ clickable: true }}
-        navigation={true}
+        navigation={{
+          nextEl: '.custom-swiper-button-next',
+          prevEl: '.custom-swiper-button-prev',
+        }}
         className="mySwiper"
         style={{ padding: '0 24px', paddingBottom: '40px' }}
       >

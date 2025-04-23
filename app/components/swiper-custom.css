@@ -20,6 +20,26 @@
 .swiper-pagination-bullet {
   background: black !important;
 }
+/* swiper-custom.css */
+
+
+/* 前のボタンの位置調整 */
+.custom-swiper-button-prev {
+  left: -0.3rem !important; /* スライダーの外側に移動 */
+}
+
+/* ページネーションのバレット */
+.custom-swiper-pagination-bullet {
+  background: rgb(246, 245, 245) !important;
+}
+
+/* スマホ画面で矢印を少し下に移動 */
+@media (max-width: 640px) {
+  .custom-swiper-button-next,
+  .custom-swiper-button-prev {
+    top: 58%; /* 45%から少し下に */
+  }
+}
 
 /* スマホ画面で矢印を少し下に移動 */
 @media (max-width: 640px) {
