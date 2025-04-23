@@ -3,7 +3,7 @@ import IconSquare from './components/IconSquare';
 import ServicesSection from './components/service';
 import AchievementsPage from './components/achievements';
 import ImageSlider from './components/bigimgs';
-import Image from "next/image";
+
 
 export default function Home() {
   return (

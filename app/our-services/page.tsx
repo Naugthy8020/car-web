@@ -4,8 +4,18 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Image from 'next/image';
 
+// サービスデータの型定義
+type Service = {
+  id: string;
+  title: string;
+  text: string;
+  images?: {
+    url: string;
+  };
+};
+
 const ServicesPage: React.FC = () => {
-  const [services, setServices] = useState<any[]>([]);
+  const [services, setServices] = useState<Service[]>([]);
 
   const apiUrl = process.env.NEXT_PUBLIC_MICROCMS_SERVICES_ENDPOINT;
   const apiKey = process.env.NEXT_PUBLIC_MICROCMS_API_KEY;
@@ -40,8 +50,8 @@ const ServicesPage: React.FC = () => {
         <p className="text-center">サービス情報を読み込み中...</p>
       ) : (
         <div className="space-y-16">
-          {services.map((service, index) => (
-            <div key={index} className="space-y-4">
+          {services.map((service) => (
+            <div key={service.id} className="space-y-4">
               {/* 画像 */}
               {service.images?.url && (
                 <div className="w-full h-72 relative rounded-lg overflow-hidden">

@@ -19,4 +19,6 @@ const IconSquare: React.FC<IconSquareProps> = React.memo(({ icon, label, href })
   );
 });
 
+IconSquare.displayName = 'IconSquare'; 
+
 export default IconSquare;

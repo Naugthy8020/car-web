@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css';
@@ -25,21 +26,20 @@ const ImageSlider: React.FC = () => {
           slidesPerView={1}
           loop={true}
           autoplay={{ delay: 3000 }}
-          pagination={{
-            clickable: true,
-          }}
+          pagination={{ clickable: true }}
           navigation={true}
           effect="fade"
           speed={800}
         >
           {images.map((src, index) => (
             <SwiperSlide key={index}>
-              <div className="w-full h-[300px] sm:h-[450px]">
-                <img
+              <div className="w-full h-[300px] sm:h-[450px] relative">
+                <Image
                   src={src}
-                  alt={`Image ${index + 1}`}
-                  className="w-full h-full object-cover"
-                  loading="eager"
+                  alt={`スライド画像 ${index + 1}`}
+                  fill
+                  className="object-cover"
+                  priority={index === 0}
                 />
               </div>
             </SwiperSlide>
@@ -57,5 +57,7 @@ const ImageSlider: React.FC = () => {
     </div>
   );
 };
+
+ImageSlider.displayName = 'ImageSlider';
 
 export default ImageSlider;
