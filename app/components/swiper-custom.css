@@ -20,3 +20,11 @@
 .swiper-pagination-bullet {
   background: black !important;
 }
+
+/* スマホ画面で矢印を少し下に移動 */
+@media (max-width: 640px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    top: 58%; /* 45%から少し下に */
+  }
+}

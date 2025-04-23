@@ -42,7 +42,7 @@ const ServicesSection: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {services.map((service, index) => (
           <Link href={`/our-services/${service.id}`} key={index}>
-            <div className="w-full h-64 relative rounded-lg overflow-hidden shadow-md cursor-pointer">
+            <div className="w-full h-64 relative rounded-lg overflow-hidden  shadow-md cursor-pointer">
               {/* 画像表示 */}
               {service.images?.url ? (
                 <Image
