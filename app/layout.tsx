@@ -27,62 +27,43 @@ export default function RootLayout({
       <html lang="ja">
         <head>
           <meta charSet="UTF-8" />
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no"
-          />
-          <meta
-            name="description"
-            content="大阪市のうさぎ自動車整備工場は、オイル交換・車検・整備・タイヤ交換など、信頼と実績のサービスでお客様のカーライフをサポートします。"
-          />
-          <meta
-            name="keywords"
-            content="車の整備, 自動車修理, 車検, オイル交換, タイヤ交換, 整備工場, カーサービス, 大阪, うさぎ自動車整備工場"
-          />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <meta name="description" content="大阪市のうさぎ自動車整備工場は、オイル交換・車検・整備・タイヤ交換など、信頼と実績のサービスでお客様のカーライフをサポートします。" />
+          <meta name="keywords" content="車の整備, 自動車修理, 車検, オイル交換, タイヤ交換, 整備工場, カーサービス, 大阪, うさぎ自動車整備工場" />
           <meta name="author" content="うさぎ自動車整備工場" />
           <title>うさぎ自動車整備工場｜大阪市の車検・整備・修理ならお任せください</title>
-          <link rel="icon" type="image/png" href="/images/fav.png" />
 
-          {/* Safari / iOS用 */}
-          <meta name="apple-mobile-web-app-capable" content="yes" />
-          <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-          <meta name="apple-mobile-web-app-title" content="うさぎ自動車整備工場" />
-          <link rel="apple-touch-icon" sizes="180x180"  href="/images/fav.png" />
-          <meta name="theme-color" content="#ffffff" />
+          {/* Safari含む各ブラウザに対応するfavicon設定 */}
+          <link rel="icon" type="image/svg+xml" href="/fv.svg" />
+          <link rel="alternate icon" type="image/png" href="/favicon.png" />
 
           {/* Open Graph / SNS Meta Tags */}
           <meta property="og:title" content="うさぎ自動車整備工場｜大阪市の車検・整備・修理ならお任せください" />
-          <meta
-            property="og:description"
-            content="大阪市のうさぎ自動車整備工場は、オイル交換・車検・整備・タイヤ交換など、信頼と実績のサービスでお客様のカーライフをサポートします。"
-          />
+          <meta property="og:description" content="大阪市のうさぎ自動車整備工場は、オイル交換・車検・整備・タイヤ交換など、信頼と実績のサービスでお客様のカーライフをサポートします。" />
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://usagi-carservice.com" />
           <meta property="og:image" content="/og-image.jpg" />
           <meta name="twitter:card" content="summary_large_image" />
 
           {/* JSON-LD構造化データ */}
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "AutoRepair",
-                "name": "うさぎ自動車整備工場",
-                "address": {
-                  "@type": "PostalAddress",
-                  "streetAddress": "大阪市中央区〇〇1-2-3",
-                  "addressRegion": "大阪府",
-                  "postalCode": "540-0001",
-                  "addressCountry": "JP",
-                },
-                "telephone": "06-1234-5678",
-                "url": "https://usagi-carservice.com",
-                "openingHours": "Mo-Fr 09:00-18:00",
-                "image": "https://usagi-carservice.com/shop-front.jpg",
-              }),
-            }}
-          />
+          <script type="application/ld+json" dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "AutoRepair",
+              "name": "うさぎ自動車整備工場",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "大阪市中央区〇〇1-2-3",
+                "addressRegion": "大阪府",
+                "postalCode": "540-0001",
+                "addressCountry": "JP"
+              },
+              "telephone": "06-1234-5678",
+              "url": "https://usagi-carservice.com",
+              "openingHours": "Mo-Fr 09:00-18:00",
+              "image": "https://usagi-carservice.com/shop-front.jpg"
+            })
+          }} />
         </head>
 
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}>
@@ -95,7 +76,7 @@ export default function RootLayout({
   );
 }
 
-// ダークモードに応じて背景切り替え
+// ダークモードに応じて背景を切り替え
 const MainWithDarkMode: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { isDarkMode } = useDarkMode();
   return (
