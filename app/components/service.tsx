@@ -4,12 +4,11 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import axios from 'axios';
 import Image from 'next/image';
-import Button from './Button';  // Import the Button component
+import Button from './Button';  // ボタンコンポーネントの読み込み
 
 const ServicesSection: React.FC = () => {
   const [services, setServices] = useState<any[]>([]);
 
-  // 環境変数を取得
   const apiUrl = process.env.NEXT_PUBLIC_MICROCMS_SERVICES_ENDPOINT;
   const apiKey = process.env.NEXT_PUBLIC_MICROCMS_API_KEY;
 
@@ -26,7 +25,7 @@ const ServicesSection: React.FC = () => {
             'X-API-KEY': apiKey,
           },
         });
-        setServices(response.data.contents); // data.contents配列を保存
+        setServices(response.data.contents);
       } catch (error) {
         console.error('サービスデータの取得に失敗しました:', error);
       }
@@ -39,38 +38,41 @@ const ServicesSection: React.FC = () => {
     <div className="max-w-7xl mx-auto px-4 py-16 bg-white relative">
       <h2 className="text-3xl font-bold text-center mb-12">サービス紹介</h2>
 
-      {/* 画像を横に3つ並べる */}
+      {/* サービスカード一覧 */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {services.map((service, index) => (
           <Link href={`/our-services/${service.id}`} key={index}>
-            <div className="w-full h-64 relative rounded-lg overflow-hidden smz shadow-md cursor-pointer">
-              {/* 画像表示 */}
+            <div className="relative w-full h-64 rounded-lg overflow-hidden shadow-md cursor-pointer group">
+              {/* 画像 */}
               {service.images?.url ? (
                 <Image
                   src={service.images.url}
                   alt={service.title}
-                  className="w-full h-full object-cover rounded-lg transition-all duration-100 hover:filter hover:brightness-75"
-                  width={500}  // 任意の適切な幅に設定
-                  height={500} // 任意の適切な高さに設定
-                  priority={false} // priority=falseで遅延読み込みを有効化
-                  loading="lazy"  // 画像遅延読み込み
+                  className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-75"
+                  width={500}
+                  height={500}
+                  loading="lazy"
                 />
               ) : (
                 <div className="w-full h-full bg-gray-200 flex items-center justify-center">
                   <p>画像はありません</p>
                 </div>
               )}
+
+              {/* オーバーレイタイトル */}
+              <div className="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 text-white px-4 py-2">
+                <p className="text-lg md:text-xl font-semibold">{service.title}</p>
+              </div>
             </div>
           </Link>
         ))}
       </div>
 
-      {/* Replace the current button with the Button component */}
+      {/* 一覧へボタン */}
       <div className="flex justify-end mt-6">
         <Button
-          label="一覧へ"
+          label="サービス一覧へ"
           href="/our-services"
-         
         />
       </div>
     </div>

@@ -26,7 +26,7 @@ export default function Header() {
   alt="Car Inc. Logo"
   width={40}
   height={40}
-  className="mr-4 mb-3" // ここで少し上に移動
+  className=" ml-5  mr-4 mb-3 " // ここで少し上に移動
 />
 
           <h1 className="text-xl font-bold">
@@ -65,7 +65,7 @@ export default function Header() {
 
           {/* ハンバーガーメニュー */}
           <button
-  className="lg:hidden text-gray-600 w-8 h-8 flex items-center justify-center absolute right-2" // right-2で右寄せ
+  className="lg:hidden text-gray-600 w-8 h-8 flex items-center justify-center absolute right-2 mt-3.5 mr-5" // right-2で右寄せ
   onClick={toggleMenu}
 >
   <div className="relative w-6 h-6 transition-all duration-300">
