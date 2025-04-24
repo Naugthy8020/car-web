@@ -24,11 +24,11 @@ export default function Header() {
         <div className="flex items-center w-full">
           {/* ロゴ */}
           <Image
-            src="/images/round-icons-KldDKNNnm3k-unsplash.svg"
+            src="/images/car-icon.png"
             alt="Car Inc. Logo"
-            width={40}
-            height={40}
-            className={`ml-5 mr-4 mb-3 ${isDarkMode ? 'filter invert brightness-0' : ''}`}
+            width={50}
+            height={50}
+            className={`ml-5 mr-4 mb-1 ${isDarkMode ? 'filter invert brightness-0' : ''}`}
           />
 
           <h1 className="text-xl font-bold">
