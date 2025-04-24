@@ -32,7 +32,7 @@ export default function RootLayout({
           <meta name="keywords" content="車の整備, 自動車修理, 車検, オイル交換, タイヤ交換, 整備工場, カーサービス, 大阪, 虎自動車整備工場" />
           <meta name="author" content="虎自動車整備工場" />
           <title>虎自動車整備工場｜大阪市の車検・整備・修理ならお任せください</title>
-          <link rel="icon" href="/round-icons-KldDKNNnm3k-unsplash.svg" />
+          <link rel="icon" href="images/round-icons-5drot-gqsmY-unsplash.svg" />
 
           {/* Open Graph / SNS Meta Tags */}
           <meta property="og:title" content="虎自動車整備工場｜大阪市の車検・整備・修理ならお任せください" />
