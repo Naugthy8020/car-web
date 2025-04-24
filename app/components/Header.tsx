@@ -28,7 +28,7 @@ export default function Header() {
             alt="Car Inc. Logo"
             width={50}
             height={50}
-            className={`ml-5 mr-4 mb-1 ${isDarkMode ? 'filter invert brightness-0' : ''}`}
+            className={`ml-5 mr-4 mb-1 `}
           />
 
           <h1 className="text-xl font-bold">
