@@ -1,23 +1,26 @@
+// app/components/Header.tsx
 "use client";
 
-import { useState } from 'react';
-import { usePathname } from 'next/navigation'; // ← 現在のパス取得
+import { useDarkMode } from '../context/DarkModeContext'; // コンテキストをインポート
+import { usePathname } from 'next/navigation'; 
 import Link from 'next/link';
 import Image from 'next/image';
+import { useState } from 'react';
 
 export default function Header() {
+  const { isDarkMode, toggleDarkMode } = useDarkMode(); // useDarkModeを使う
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const pathname = usePathname(); // ← 現在のパス取得
+  const pathname = usePathname();
 
   const isActive = (href: string) =>
-    pathname === href ? 'border-b-2 border-black font-semibold' : ''; // アクティブリンクに下線
+    pathname === href ? 'border-b-2 border-black font-semibold' : '';
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen); // メニュー開閉トグル
+    setIsMenuOpen(!isMenuOpen);
   };
 
   return (
-    <header className="bg-gray-100 text-gray-600 py-9 shadow">
+    <header className={`py-9 shadow ${isDarkMode ? 'bg-gray-800 text-white' : 'bg-gray-100 text-gray-600'}`}>
       <div className="container mx-auto">
         <div className="flex items-center w-full">
           {/* ロゴ */}
@@ -26,7 +29,7 @@ export default function Header() {
   alt="Car Inc. Logo"
   width={40}
   height={40}
-  className=" ml-5  mr-4 mb-3 " // ここで少し上に移動
+  className={`ml-5 mr-4 mb-3 ${isDarkMode ? 'filter invert brightness-0' : ''}`}
 />
 
           <h1 className="text-xl font-bold">
@@ -39,7 +42,7 @@ export default function Header() {
               <li>
                 <Link
                   href="/"
-                  className={`hover:text-black ${isActive('/')}`} // ホームリンク
+                  className={`hover:text-black ${isActive('/')}`}
                 >
                   Home
                 </Link>
@@ -47,7 +50,7 @@ export default function Header() {
               <li>
                 <Link
                   href="/about"
-                  className={`hover:text-black ${isActive('/about')}`} // Aboutリンク
+                  className={`hover:text-black ${isActive('/about')}`}
                 >
                   About
                 </Link>
@@ -55,7 +58,7 @@ export default function Header() {
               <li>
                 <Link
                   href="/qa"
-                  className={`hover:text-black ${isActive('/qa')}`} // Contactリンク
+                  className={`hover:text-black ${isActive('/qa')}`}
                 >
                   Contact
                 </Link>
@@ -65,29 +68,35 @@ export default function Header() {
 
           {/* ハンバーガーメニュー */}
           <button
-  className="lg:hidden text-gray-600 w-8 h-8 flex items-center justify-center absolute right-2 mt-3.5 mr-5" // right-2で右寄せ
-  onClick={toggleMenu}
+            className="lg:hidden text-gray-600 w-8 h-8 flex items-center justify-center absolute right-2 mt-3.5 mr-5"
+            onClick={toggleMenu}
+          >
+            <div className="relative w-6 h-6 transition-all duration-300">
+              <span
+                className={`block absolute w-6 h-0.5 bg-gray-600 transition-transform duration-300 ${
+                  isMenuOpen ? 'rotate-45 top-[50%] transform -translate-y-1/2' : 'top-0'
+                }`}
+              ></span>
+              <span
+                className={`block absolute w-6 h-0.5 bg-gray-600 transition-opacity duration-300 ${
+                  isMenuOpen ? 'opacity-0 top-[50%] transform -translate-y-1/2' : 'top-[25%]'
+                }`}
+              ></span>
+              <span
+                className={`block absolute w-6 h-0.5 bg-gray-600 transition-transform duration-300 ${
+                  isMenuOpen ? 'rotate-135 top-[50%] transform -translate-y-1/2' : 'top-[50%]'
+                }`}
+              ></span>
+            </div>
+          </button>
+
+          {/* ダークモード切り替えボタン */}
+          <button
+  onClick={toggleDarkMode}
+  className={`ml-4 text-gray-600 ${isDarkMode ? 'text-white' : 'text-black'}`}
 >
-  <div className="relative w-6 h-6 transition-all duration-300">
-    <span
-      className={`block absolute w-6 h-0.5 bg-gray-600 transition-transform duration-300 ${
-        isMenuOpen ? 'rotate-45 top-[50%] transform -translate-y-1/2' : 'top-0'
-      }`}
-    ></span>
-    <span
-      className={`block absolute w-6 h-0.5 bg-gray-600 transition-opacity duration-300 ${
-        isMenuOpen ? 'opacity-0 top-[50%] transform -translate-y-1/2' : 'top-[25%]'
-      }`}
-    ></span>
-    <span
-      className={`block absolute w-6 h-0.5 bg-gray-600 transition-transform duration-300 ${
-        isMenuOpen ? 'rotate-135 top-[50%] transform -translate-y-1/2' : 'top-[50%]'
-      }`}
-    ></span>
-  </div>
-</button>
-
-
+            {isDarkMode ? '🌞 Light Mode' : '🌙 Dark Mode'}
+          </button>
         </div>
 
         {/* モバイルナビ */}
@@ -96,7 +105,7 @@ export default function Header() {
             <li>
               <Link
                 href="/"
-                className={`hover:text-black ${isActive('/')}`} // モバイルのホームリンク
+                className={`hover:text-black ${isActive('/')}`}
               >
                 Home
               </Link>
@@ -104,7 +113,7 @@ export default function Header() {
             <li>
               <Link
                 href="/about"
-                className={`hover:text-black ${isActive('/about')}`} // モバイルのAboutリンク
+                className={`hover:text-black ${isActive('/about')}`}
               >
                 About
               </Link>
@@ -112,7 +121,7 @@ export default function Header() {
             <li>
               <Link
                 href="/qa"
-                className={`hover:text-black ${isActive('/qa')}`} // モバイルのContactリンク
+                className={`hover:text-black ${isActive('/qa')}`}
               >
                 Contact
               </Link>

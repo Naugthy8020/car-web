@@ -10,6 +10,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import './swiper-custom.css'; // 必ず存在確認！
+import { useDarkMode } from '../context/DarkModeContext'; // Contextをインポート
 
 interface Question {
   id: string;
@@ -28,6 +29,7 @@ interface ApiResponse {
 }
 
 const News: React.FC = () => {
+  const { isDarkMode } = useDarkMode(); // ダークモードの状態を取得
   const [questions, setQuestions] = useState<Question[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -76,11 +78,10 @@ const News: React.FC = () => {
   if (error) return <div className="text-red-500 text-center mt-10">{error}</div>;
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8 relative">
-     <h1 className="text-4xl md:text-5xl font-black tracking-wide text-center text-gray-800 relative mb-2 mt-9 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-20 after:h-1 after:bg-gradient-to-r after:from-blue-500 after:to-teal-400">
-  News
-</h1>
-
+    <div className={`max-w-6xl mx-auto px-4 py-8 relative ${isDarkMode ? 'bg-gray-800 text-white' : 'bg-white-600 text-gray-800'}`}>
+      <h1 className="text-4xl md:text-5xl font-black tracking-wide text-center relative mb-2 mt-9 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-20 after:h-1 after:bg-gradient-to-r after:from-blue-500 after:to-teal-400">
+        News
+      </h1>
 
       {/* カスタム矢印（黒） */}
       <div
@@ -117,7 +118,7 @@ const News: React.FC = () => {
           <SwiperSlide key={question.id} className="flex justify-center">
             <Link href={`/our-news/${question.id}`}>
               <div
-                className="bg-white rounded-xl shadow-xl p-8 hover:shadow-2xl transition-shadow flex flex-col justify-between mb-4"
+                className={`rounded-xl shadow-xl p-8 hover:shadow-2xl transition-shadow flex flex-col justify-between mb-4 ${isDarkMode ? 'bg-black text-white' : 'bg-white text-gray-800'}`}
                 style={{ height: '500px', width: '100%', maxWidth: '350px' }}
               >
                 {question.image?.url && (
@@ -131,7 +132,7 @@ const News: React.FC = () => {
                   />
                 )}
                 <h2 className="text-2xl font-semibold mb-2">{question.title}</h2>
-                <p className="text-sm text-gray-500 mb-2">{formatDate(question.time)}</p>
+                <p className="text-sm mb-2">{formatDate(question.time)}</p>
               </div>
             </Link>
           </SwiperSlide>

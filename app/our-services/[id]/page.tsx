@@ -1,46 +1,49 @@
-import React from 'react';
+'use client';
+
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import axios from 'axios';
-import { notFound } from 'next/navigation';
+import { notFound, useParams } from 'next/navigation';
+import { useDarkMode } from '../../context/DarkModeContext';
 
-// サービスの詳細情報を直接取得するサーバーコンポーネント
-async function getServiceData(id: string) {
-  const apiUrl = process.env.NEXT_PUBLIC_MICROCMS_SERVICES_ENDPOINT;
-  const apiKey = process.env.NEXT_PUBLIC_MICROCMS_API_KEY;
+export default function ServiceDetailPage() {
+  const { isDarkMode } = useDarkMode();
+  const { id } = useParams(); // useParams()を使ってID取得
+  const [service, setService] = useState<any>(null);
 
-  try {
-    const res = await axios.get(`${apiUrl}/${id}`, {
-      headers: {
-        'X-API-KEY': apiKey,
-      },
-    });
-    return res.data;
-  } catch (error) {
-    console.error('サービスの詳細データ取得に失敗:', error);
-    return null; // エラーが発生した場合はnullを返す
-  }
-}
+  useEffect(() => {
+    const getServiceData = async () => {
+      const apiUrl = process.env.NEXT_PUBLIC_MICROCMS_SERVICES_ENDPOINT;
+      const apiKey = process.env.NEXT_PUBLIC_MICROCMS_API_KEY;
 
-export default async function ServiceDetailPage({ params }: { params:  Promise<{ id: string }> }) {
-  const { id } = await params;
-  const service = await getServiceData(id);
+      try {
+        const res = await axios.get(`${apiUrl}/${id}`, {
+          headers: { 'X-API-KEY': apiKey },
+        });
+        setService(res.data);
+      } catch (error) {
+        console.error('サービスの詳細データ取得に失敗:', error);
+        notFound(); // 失敗時に 404
+      }
+    };
 
-  if (!service) {
-    notFound(); // サービスが見つからなければ404
-  }
+    if (id) getServiceData();
+  }, [id]);
+
+  if (!service) return null;
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-12">
+    <div className={`max-w-4xl mx-auto px-4 py-12 ${isDarkMode ? 'text-white' : 'text-gray-700'}`}>
       <h1 className="text-3xl font-bold mb-6">{service.title}</h1>
       <div className="w-full h-72 relative mb-6 rounded overflow-hidden shadow">
         <Image
-          src={service.images?.url || '/images/placeholder.jpg'} // 画像がない場合はプレースホルダー画像を表示
+          src={service.images?.url || '/images/placeholder.jpg'}
           alt={service.title}
           fill
-          style={{ objectFit: 'cover' }} // objectFitを指定して画像の調整
+          className="object-cover"
         />
       </div>
-      <p className="text-lg text-gray-700">{service.text}</p>
+      <p className="text-lg">{service.text}</p>
     </div>
   );
 }

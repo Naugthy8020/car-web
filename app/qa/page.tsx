@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
+import { useDarkMode } from '../context/DarkModeContext';  // Assuming you have a DarkModeContext
 
 interface FormData {
   name: string;
@@ -27,10 +28,9 @@ const ContactPage: React.FC = () => {
   const [errors, setErrors] = useState<Partial<FormData>>({});
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [submissionSuccess, setSubmissionSuccess] = useState<boolean>(false);
+  const { isDarkMode } = useDarkMode(); // Dark mode state from context
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
     setErrors((prevErrors) => ({ ...prevErrors, [name]: undefined }));
@@ -81,59 +81,47 @@ const ContactPage: React.FC = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-12">
+    <div className={`max-w-4xl mx-auto px-4 py-12 ${isDarkMode ? ' text-white' : 'bg-white text-gray-800'}`}>
       <h1 className="text-4xl font-bold mb-8 text-center">お問い合わせ</h1>
 
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
-          <label htmlFor="name" className="block text-lg font-semibold mb-2">
-            名前
-          </label>
+          <label htmlFor="name" className="block text-lg font-semibold mb-2">名前</label>
           <input
             type="text"
             id="name"
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className={`w-full p-3 border ${
-              errors.name ? 'border-red-500' : 'border-gray-300'
-            } rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500`}
+            className={`w-full p-3 border ${errors.name ? 'border-red-500' : 'border-gray-300'} rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-black`}
             required
           />
           {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
         </div>
 
         <div>
-          <label htmlFor="email" className="block text-lg font-semibold mb-2">
-            メールアドレス
-          </label>
+          <label htmlFor="email" className="block text-lg font-semibold mb-2">メールアドレス</label>
           <input
             type="email"
             id="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className={`w-full p-3 border ${
-              errors.email ? 'border-red-500' : 'border-gray-300'
-            } rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500`}
+            className={`w-full p-3 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-black`}
             required
           />
           {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
         </div>
 
         <div>
-          <label htmlFor="message" className="block text-lg font-semibold mb-2">
-            メッセージ
-          </label>
+          <label htmlFor="message" className="block text-lg font-semibold mb-2">メッセージ</label>
           <textarea
             id="message"
             name="message"
             value={formData.message}
             onChange={handleChange}
             rows={4}
-            className={`w-full p-3 border ${
-              errors.message ? 'border-red-500' : 'border-gray-300'
-            } rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500`}
+            className={`w-full p-3 border ${errors.message ? 'border-red-500' : 'border-gray-300'} rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-black`}
             required
           />
           {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
@@ -142,7 +130,7 @@ const ContactPage: React.FC = () => {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-300"
+          className={`w-full p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-black ${isDarkMode ? 'bg-white text-black hover:bg-gray-300' : 'bg-black text-white hover:bg-gray-800 disabled:bg-gray-300'}`}
         >
           {isSubmitting ? '送信中...' : '送信'}
         </button>

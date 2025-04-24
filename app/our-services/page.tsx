@@ -3,8 +3,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Image from 'next/image';
+import { useDarkMode } from '../context/DarkModeContext'; // ← 追加
 
-// サービスデータの型定義
 type Service = {
   id: string;
   title: string;
@@ -16,6 +16,7 @@ type Service = {
 
 const ServicesPage: React.FC = () => {
   const [services, setServices] = useState<Service[]>([]);
+  const { isDarkMode } = useDarkMode(); // ← ダークモード取得
 
   const apiUrl = process.env.NEXT_PUBLIC_MICROCMS_SERVICES_ENDPOINT;
   const apiKey = process.env.NEXT_PUBLIC_MICROCMS_API_KEY;
@@ -43,7 +44,7 @@ const ServicesPage: React.FC = () => {
   }, [apiUrl, apiKey]);
 
   return (
-    <div className="max-w-5xl mx-auto px-4 py-16">
+    <div className={`max-w-5xl mx-auto px-4 py-16 ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-800'}`}>
       <h1 className="text-4xl font-bold text-center mb-12">提供サービス一覧</h1>
 
       {services.length === 0 ? (
@@ -71,7 +72,7 @@ const ServicesPage: React.FC = () => {
               {/* 詳細内容（HTML対応） */}
               {service.text && (
                 <div
-                  className="prose max-w-none"
+                  className={`prose max-w-none ${isDarkMode ? 'prose-invert' : ''}`} // ← Tailwind Typographyのダーク対応
                   dangerouslySetInnerHTML={{ __html: service.text }}
                 />
               )}

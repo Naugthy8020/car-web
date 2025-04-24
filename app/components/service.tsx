@@ -1,3 +1,4 @@
+// ServicesSection.tsx
 'use client';
 
 import React, { useEffect, useState } from 'react';
@@ -5,10 +6,11 @@ import Link from 'next/link';
 import axios from 'axios';
 import Image from 'next/image';
 import Button from './Button';  // ボタンコンポーネントの読み込み
+import { useDarkMode } from '../context/DarkModeContext'; // ダークモードの状態を取得
 
 const ServicesSection: React.FC = () => {
   const [services, setServices] = useState<any[]>([]);
-
+  const { isDarkMode } = useDarkMode(); // ダークモードの状態を取得
   const apiUrl = process.env.NEXT_PUBLIC_MICROCMS_SERVICES_ENDPOINT;
   const apiKey = process.env.NEXT_PUBLIC_MICROCMS_API_KEY;
 
@@ -35,17 +37,16 @@ const ServicesSection: React.FC = () => {
   }, [apiUrl, apiKey]);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-16 bg-white relative">
-     <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-8 mt-8 tracking-tight relative text-gray-800 after:content-[''] after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-24 after:h-1 after:bg-gradient-to-r after:from-blue-500 after:to-green-400">
-  Service
-</h2>
-
+    <div className={`max-w-7xl mx-auto px-4 py-16 relative ${isDarkMode ? 'bg-gray-800 text-white' : 'bg-white-600 text-gray-800'}`}>
+      <h2 className={`text-4xl md:text-5xl font-extrabold text-center mb-8 mt-8 tracking-tight relative ${isDarkMode ? 'text-white' : 'text-gray-800'} after:content-[''] after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-24 after:h-1 after:bg-gradient-to-r after:from-blue-500 after:to-green-400`}>
+        Service
+      </h2>
 
       {/* サービスカード一覧 */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {services.map((service, index) => (
           <Link href={`/our-services/${service.id}`} key={index}>
-            <div className="relative w-full h-64 rounded-lg overflow-hidden shadow-md cursor-pointer group">
+            <div className={`relative w-full h-64 rounded-lg overflow-hidden shadow-md cursor-pointer group ${isDarkMode ? 'bg-gray-700' : 'bg-white'}`}>
               {/* 画像 */}
               {service.images?.url ? (
                 <Image
@@ -76,6 +77,7 @@ const ServicesSection: React.FC = () => {
         <Button
           label="サービス一覧へ"
           href="/our-services"
+           // ダークモードをボタンに渡す
         />
       </div>
     </div>
