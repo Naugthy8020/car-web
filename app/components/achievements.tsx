@@ -8,7 +8,7 @@ const AchievementsPage: React.FC = () => {
   return (
     <div>
       {/* グレーのスペース（画像の上） */}
-      <div className="bg-gray-100 h-[10px] sm:h-5 w-full" /> {/* 小さい画面では高さが大きくなるように設定 */}
+      <div className="bg-gray-100 h-[10px] sm:h-5 w-full mt-15" /> {/* 小さい画面では高さが大きくなるように設定 */}
 
       {/* メインビジュアル */}
      <div className="relative w-full h-[600px] sm:h-[500px]">
@@ -40,7 +40,7 @@ const AchievementsPage: React.FC = () => {
 
 
       {/* グレーのスペース（画像の下） */}
-      <div className="bg-gray-100 h-[10px] sm:h-5 w-full" /> {/* 小さい画面では高さが大きくなるように設定 */}
+      <div className="bg-gray-100 h-[10px] sm:h-5 w-full mb-15" /> {/* 小さい画面では高さが大きくなるように設定 */}
     </div>
   );
 };

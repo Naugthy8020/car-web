@@ -77,7 +77,10 @@ const News: React.FC = () => {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8 relative">
-      <h1 className="text-3xl font-bold mb-6 text-center">news一覧</h1>
+     <h1 className="text-4xl md:text-5xl font-black uppercase tracking-wide text-center text-gray-800 relative mb-2 mt-9 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-20 after:h-1 after:bg-gradient-to-r after:from-blue-500 after:to-teal-400">
+  News
+</h1>
+
 
       {/* カスタム矢印（黒） */}
       <div

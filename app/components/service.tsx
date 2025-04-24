@@ -36,7 +36,10 @@ const ServicesSection: React.FC = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-16 bg-white relative">
-      <h2 className="text-3xl font-bold text-center mb-12">サービス紹介</h2>
+     <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-8 mt-8 tracking-tight relative text-gray-800 after:content-[''] after:absolute after:-bottom-2 after:left-1/2 after:-translate-x-1/2 after:w-24 after:h-1 after:bg-gradient-to-r after:from-blue-500 after:to-green-400">
+  Services
+</h2>
+
 
       {/* サービスカード一覧 */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
