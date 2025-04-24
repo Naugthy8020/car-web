@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { FaTwitter, FaInstagram, FaGithub } from 'react-icons/fa';
 import { useDarkMode } from '../context/DarkModeContext';
@@ -10,7 +12,7 @@ const Footer: React.FC = () => {
       {/* フッターと同じ背景色でスペースを空ける */}
       <div className={`${isDarkMode ? 'bg-gray-800' : 'bg-gray-100'} h-18`} />
 
-      <footer className={`py-6 ${isDarkMode ? 'bg-gray-800 text-white' : 'bg-gray-100 text-gray-600'}`}>
+      <footer className={`py-6 ${isDarkMode ? 'bg-black text-white' : 'bg-gray-100 text-gray-600'}`}>
         <div className="max-w-4xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
           <p className="text-sm mb-4 md:mb-0">&copy; {new Date().getFullYear()} Car Inc.</p>
           <div className="flex space-x-4 text-2xl">

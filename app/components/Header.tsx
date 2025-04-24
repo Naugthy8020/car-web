@@ -19,7 +19,8 @@ export default function Header() {
   };
 
   return (
-    <header className={`py-9 shadow ${isDarkMode ? 'bg-gray-800 text-white' : 'bg-gray-100 text-gray-600'}`}>
+<header className={`py-9 shadow ${isDarkMode ? 'bg-black text-white' : 'bg-gray-100 text-gray-600'}`}>
+
       <div className="container mx-auto">
         <div className="flex items-center w-full">
           {/* ロゴ */}
