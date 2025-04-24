@@ -11,7 +11,7 @@ const AchievementsPage: React.FC = () => {
   return (
     <div className={`${isDarkMode ? 'bg-black text-white' : 'bg-white text-gray-800'}`}>
       {/* グレーのスペース（画像の上） */}
-      <div className={`h-[10px] sm:h-5 w-full mt-12 ${isDarkMode ? 'bg-gray-900' : 'bg-gray-100'}`} /> {/* 小さい画面では高さが大きくなるように設定 */}
+      <div className={`h-[10px] sm:h-5 w-full mt-12 ${isDarkMode ? 'bg-black' : 'bg-gray-100'}`} /> {/* 小さい画面では高さが大きくなるように設定 */}
 
       {/* メインビジュアル */}
       <div className="relative w-full h-[600px] sm:h-[500px]">
@@ -40,7 +40,7 @@ const AchievementsPage: React.FC = () => {
       </div>
 
       {/* グレーのスペース（画像の下） */}
-      <div className={`h-[10px] sm:h-5 w-full mb-10 ${isDarkMode ? 'bg-gray-900' : 'bg-gray-100'}`} /> {/* 小さい画面では高さが大きくなるように設定 */}
+      <div className={`h-[10px] sm:h-5 w-full mb-10 ${isDarkMode ? 'bg-black' : 'bg-gray-100'}`} /> {/* 小さい画面では高さが大きくなるように設定 */}
     </div>
   );
 };

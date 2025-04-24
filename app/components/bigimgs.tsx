@@ -74,7 +74,7 @@ const ImageSlider: React.FC = () => {
       </div>
 
       {/* 下のグレー部分 */}
-      <div className={`h-4 sm:h-6 w-full ${isDarkMode ? 'bg-gray-900' : 'bg-gray-100'}`} />
+      <div className={`h-4 sm:h-6 w-full ${isDarkMode ? 'bg-black' : 'bg-gray-100'}`} />
     </div>
   );
 };
