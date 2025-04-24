@@ -33,13 +33,7 @@ export default function RootLayout({
           <meta name="author" content="うさぎ自動車整備工場" />
           <title>うさぎ自動車整備工場｜大阪市の車検・整備・修理ならお任せください</title>
 
-          {/* Favicon for all platforms */}
-          <link rel="icon" type="image/svg+xml" href="/fv.svg" />
-          <link rel="alternate icon" type="image/png" href="/favicon.png" />
-          <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-          <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
-          <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
-
+        
           {/* Open Graph / SNS Meta Tags */}
           <meta property="og:title" content="うさぎ自動車整備工場｜大阪市の車検・整備・修理ならお任せください" />
           <meta property="og:description" content="大阪市のうさぎ自動車整備工場は、オイル交換・車検・整備・タイヤ交換など、信頼と実績のサービスでお客様のカーライフをサポートします。" />
