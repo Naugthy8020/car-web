@@ -39,6 +39,7 @@ export default function RootLayout({
           <link rel="icon" type="image/png" href="/car-icon.png" />
 <link rel="icon" type="image/x-icon" href="/car-icon.ico" />
 <link rel="apple-touch-icon" href="/car-icon.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
 
           {/* Open Graph / SNS Meta Tags */}
