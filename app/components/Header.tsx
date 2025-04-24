@@ -1,4 +1,3 @@
-// app/components/Header.tsx
 "use client";
 
 import { useDarkMode } from '../context/DarkModeContext'; // コンテキストをインポート
@@ -25,12 +24,12 @@ export default function Header() {
         <div className="flex items-center w-full">
           {/* ロゴ */}
           <Image
-  src="/images/round-icons-KldDKNNnm3k-unsplash.svg"
-  alt="Car Inc. Logo"
-  width={40}
-  height={40}
-  className={`ml-5 mr-4 mb-3 ${isDarkMode ? 'filter invert brightness-0' : ''}`}
-/>
+            src="/images/round-icons-KldDKNNnm3k-unsplash.svg"
+            alt="Car Inc. Logo"
+            width={40}
+            height={40}
+            className={`ml-5 mr-4 mb-3 ${isDarkMode ? 'filter invert brightness-0' : ''}`}
+          />
 
           <h1 className="text-xl font-bold">
             <Link href="/">Car Inc.</Link>
@@ -89,14 +88,6 @@ export default function Header() {
               ></span>
             </div>
           </button>
-
-          {/* ダークモード切り替えボタン */}
-          <button
-  onClick={toggleDarkMode}
-  className={`ml-4 text-gray-600 ${isDarkMode ? 'text-white' : 'text-black'}`}
->
-            {isDarkMode ? '🌞 Light Mode' : '🌙 Dark Mode'}
-          </button>
         </div>
 
         {/* モバイルナビ */}
@@ -125,6 +116,15 @@ export default function Header() {
               >
                 Contact
               </Link>
+            </li>
+            {/* ダークモード切り替えボタン */}
+            <li>
+              <button
+                onClick={toggleDarkMode}
+                className={`mt-4 text-gray-600 ${isDarkMode ? 'text-white' : 'text-black'}`}
+              >
+                {isDarkMode ? '☀️Light Mode☀️' : '🌙 Dark Mode🌙'}
+              </button>
             </li>
           </ul>
         </nav>
