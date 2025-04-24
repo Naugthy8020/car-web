@@ -36,6 +36,10 @@ export default function RootLayout({
           {/* Safari含む各ブラウザに対応するfavicon設定 */}
           <link rel="icon" type="image/svg+xml" href="/fv.svg" />
           <link rel="alternate icon" type="image/svg" href="/fv.svg" />
+          <link rel="icon" type="image/png" href="/car-icon.png" />
+<link rel="icon" type="image/x-icon" href="/car-icon.ico" />
+<link rel="apple-touch-icon" href="/car-icon.png" />
+
 
           {/* Open Graph / SNS Meta Tags */}
           <meta property="og:title" content="うさぎ自動車整備工場｜大阪市の車検・整備・修理ならお任せください" />
