@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
   return (
     <>
       {/* フッターと同じ背景色でスペースを空ける */}
-      <div className={`${isDarkMode ? 'bg-gray-800' : 'bg-gray-100'} h-18`} />
+      <div className={`${isDarkMode ? 'bg-gray-800' : 'bg-white-600'} h-18`} />
 
       <footer className={`py-6 ${isDarkMode ? 'bg-black text-white' : 'bg-gray-100 text-gray-600'}`}>
         <div className="max-w-4xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between">

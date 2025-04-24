@@ -19,8 +19,7 @@ export default function Header() {
   };
 
   return (
-<header className={`py-9 shadow ${isDarkMode ? 'bg-black text-white' : 'bg-gray-100 text-gray-600'}`}>
-
+    <header className={`py-9 shadow ${isDarkMode ? 'bg-black text-white' : 'bg-gray-100 text-gray-600'}`}>
       <div className="container mx-auto">
         <div className="flex items-center w-full">
           {/* ロゴ */}
@@ -37,7 +36,7 @@ export default function Header() {
           </h1>
 
           {/* ナビゲーション */}
-          <nav className="hidden lg:flex ml-8 flex-grow justify-end">
+          <nav className="hidden lg:flex ml-8 flex-grow justify-end items-center space-x-4">
             <ul className="flex space-x-4">
               <li>
                 <Link
@@ -64,6 +63,14 @@ export default function Header() {
                 </Link>
               </li>
             </ul>
+
+            {/* ダークモード切り替えボタン (デスクトップ用) */}
+            <button
+              onClick={toggleDarkMode}
+              className={`text-gray-600 ${isDarkMode ? 'text-white' : 'text-black'}`}
+            >
+              {isDarkMode ? '☀️ Light Mode ☀️' : '🌙 Dark Mode 🌙'}
+            </button>
           </nav>
 
           {/* ハンバーガーメニュー */}
@@ -72,28 +79,27 @@ export default function Header() {
             onClick={toggleMenu}
           >
             <div className="relative w-6 h-6 transition-all duration-300">
-            <span
-  className={`block absolute w-6 h-0.5 ${
-    isDarkMode ? 'bg-white' : 'bg-gray-600'
-  } transition-transform duration-300 ${
-    isMenuOpen ? 'rotate-45 top-[50%] transform -translate-y-1/2' : 'top-0'
-  }`}
-/>
-<span
-  className={`block absolute w-6 h-0.5 ${
-    isDarkMode ? 'bg-white' : 'bg-gray-600'
-  } transition-opacity duration-300 ${
-    isMenuOpen ? 'opacity-0 top-[50%] transform -translate-y-1/2' : 'top-[25%]'
-  }`}
-/>
-<span
-  className={`block absolute w-6 h-0.5 ${
-    isDarkMode ? 'bg-white' : 'bg-gray-600'
-  } transition-transform duration-300 ${
-    isMenuOpen ? 'rotate-135 top-[50%] transform -translate-y-1/2' : 'top-[50%]'
-  }`}
-/>
-
+              <span
+                className={`block absolute w-6 h-0.5 ${
+                  isDarkMode ? 'bg-white' : 'bg-gray-600'
+                } transition-transform duration-300 ${
+                  isMenuOpen ? 'rotate-45 top-[50%] transform -translate-y-1/2' : 'top-0'
+                }`}
+              />
+              <span
+                className={`block absolute w-6 h-0.5 ${
+                  isDarkMode ? 'bg-white' : 'bg-gray-600'
+                } transition-opacity duration-300 ${
+                  isMenuOpen ? 'opacity-0 top-[50%] transform -translate-y-1/2' : 'top-[25%]'
+                }`}
+              />
+              <span
+                className={`block absolute w-6 h-0.5 ${
+                  isDarkMode ? 'bg-white' : 'bg-gray-600'
+                } transition-transform duration-300 ${
+                  isMenuOpen ? 'rotate-135 top-[50%] transform -translate-y-1/2' : 'top-[50%]'
+                }`}
+              />
             </div>
           </button>
         </div>
@@ -131,7 +137,7 @@ export default function Header() {
                 onClick={toggleDarkMode}
                 className={`mt-4 text-gray-600 ${isDarkMode ? 'text-white' : 'text-black'}`}
               >
-                {isDarkMode ? '☀️Light Mode☀️' : '🌙 Dark Mode🌙'}
+                {isDarkMode ? '☀️ Light Mode ☀️' : '🌙 Dark Mode 🌙'}
               </button>
             </li>
           </ul>
