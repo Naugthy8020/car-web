@@ -72,21 +72,28 @@ export default function Header() {
             onClick={toggleMenu}
           >
             <div className="relative w-6 h-6 transition-all duration-300">
-              <span
-                className={`block absolute w-6 h-0.5 bg-gray-600 transition-transform duration-300 ${
-                  isMenuOpen ? 'rotate-45 top-[50%] transform -translate-y-1/2' : 'top-0'
-                }`}
-              ></span>
-              <span
-                className={`block absolute w-6 h-0.5 bg-gray-600 transition-opacity duration-300 ${
-                  isMenuOpen ? 'opacity-0 top-[50%] transform -translate-y-1/2' : 'top-[25%]'
-                }`}
-              ></span>
-              <span
-                className={`block absolute w-6 h-0.5 bg-gray-600 transition-transform duration-300 ${
-                  isMenuOpen ? 'rotate-135 top-[50%] transform -translate-y-1/2' : 'top-[50%]'
-                }`}
-              ></span>
+            <span
+  className={`block absolute w-6 h-0.5 ${
+    isDarkMode ? 'bg-white' : 'bg-gray-600'
+  } transition-transform duration-300 ${
+    isMenuOpen ? 'rotate-45 top-[50%] transform -translate-y-1/2' : 'top-0'
+  }`}
+/>
+<span
+  className={`block absolute w-6 h-0.5 ${
+    isDarkMode ? 'bg-white' : 'bg-gray-600'
+  } transition-opacity duration-300 ${
+    isMenuOpen ? 'opacity-0 top-[50%] transform -translate-y-1/2' : 'top-[25%]'
+  }`}
+/>
+<span
+  className={`block absolute w-6 h-0.5 ${
+    isDarkMode ? 'bg-white' : 'bg-gray-600'
+  } transition-transform duration-300 ${
+    isMenuOpen ? 'rotate-135 top-[50%] transform -translate-y-1/2' : 'top-[50%]'
+  }`}
+/>
+
             </div>
           </button>
         </div>
