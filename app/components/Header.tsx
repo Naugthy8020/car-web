@@ -24,7 +24,7 @@ export default function Header() {
         <div className="flex items-center w-full">
           {/* ロゴ */}
           <Image
-            src="/car-icon.png"
+            src="/icon.svg"
             alt="Car Inc. Logo"
             width={50}
             height={50}
