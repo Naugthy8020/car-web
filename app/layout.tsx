@@ -34,33 +34,7 @@ export default function RootLayout({
           <title>うさぎ自動車整備工場｜大阪市の車検・整備・修理ならお任せください</title>
 
         
-          {/* Open Graph / SNS Meta Tags */}
-          <meta property="og:title" content="うさぎ自動車整備工場｜大阪市の車検・整備・修理ならお任せください" />
-          <meta property="og:description" content="大阪市のうさぎ自動車整備工場は、オイル交換・車検・整備・タイヤ交換など、信頼と実績のサービスでお客様のカーライフをサポートします。" />
-          <meta property="og:type" content="website" />
-          <meta property="og:url" content="https://usagi-carservice.com" />
-          <meta property="og:image" content="/og-image.jpg" />
-          <meta name="twitter:card" content="summary_large_image" />
-
-          {/* JSON-LD構造化データ */}
-          <script type="application/ld+json" dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "AutoRepair",
-              "name": "うさぎ自動車整備工場",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "大阪市中央区〇〇1-2-3",
-                "addressRegion": "大阪府",
-                "postalCode": "540-0001",
-                "addressCountry": "JP"
-              },
-              "telephone": "06-1234-5678",
-              "url": "https://usagi-carservice.com",
-              "openingHours": "Mo-Fr 09:00-18:00",
-              "image": "https://usagi-carservice.com/shop-front.jpg"
-            })
-          }} />
+     
         </head>
 
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}>
