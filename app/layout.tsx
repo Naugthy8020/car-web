@@ -24,8 +24,9 @@ export default function RootLayout({
 }>) {
   return (
     <DarkModeProvider>
-      <html lang="ja">
+      <html >
         <head>
+        <meta name="google-site-verification" content="nlz1Xtk_NZkDZNCuGOEVfsesFAKS-FttnvdDtuAmvxY" />
           <meta charSet="UTF-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <meta name="description" content="大阪市のうさぎ自動車整備工場は、オイル交換・車検・整備・タイヤ交換など、信頼と実績のサービスでお客様のカーライフをサポートします。" />
